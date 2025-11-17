@@ -1,0 +1,201 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.message {
+    opacity: 0;
+    font-size: 24px;
+    transition: opacity 0.3s ease;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background: radial-gradient(circle at top, #1a1f4b, #0a0a0f 70%);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+
+    /* ambient neon sky glow */
+    box-shadow: inset 0 0 200px rgba(0, 140, 255, 0.1),
+                inset 0 0 300px rgba(130, 0, 255, 0.15);
+}
+.hit-counter{
+    text-align: center;
+    font-size: 24px;
+    color: red;
+    font-weight: bold;
+}
+.glow-gold {
+    color: gold;
+    text-shadow: 0 0 15px gold, 0 0 30px gold;
+    transition: all 0.4s ease;
+}
+.hide{
+    display: none;
+}
+.container {
+    background: rgba(20, 20, 35, 0.8);
+    border-radius: 20px;
+    padding: 30px;
+    max-width: 700px;
+    width: 100%;
+
+    /* Neon glowing border */
+    border: 1px solid rgba(0, 150, 255, 0.6);
+    box-shadow:
+        0 0 25px rgba(0, 140, 255, 0.7),
+        0 0 45px rgba(140, 0, 255, 0.6),
+        inset 0 0 20px rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(6px);
+}
+
+h1 {
+    text-align: center;
+    color: #7ddfff;
+    font-size: 2.7em;
+    margin-bottom: 20px;
+
+    /* neon heading glow */
+    text-shadow:
+        0 0 15px rgba(0, 200, 255, 0.9),
+        0 0 30px rgba(140, 0, 255, 0.7);
+}
+
+.scoreboard {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.score-box {
+    background: linear-gradient(135deg, #0a2a48, #1b0f3a);
+    color: #aee9ff;
+    padding: 15px 30px;
+    border-radius: 12px;
+    text-align: center;
+
+    /* neon panels */
+    box-shadow: 
+        0 0 25px rgba(0, 180, 255, 0.8),
+        inset 0 0 15px rgba(180, 0, 255, 0.3);
+    border: 1px solid rgba(0, 180, 255, 0.5);
+}
+
+.score-box h3 {
+    font-size: 0.9em;
+    margin-bottom: 5px;
+    opacity: 0.85;
+}
+
+.score-box div {
+    font-size: 2em;
+    font-weight: bold;
+}
+
+.start-btn {
+    display: block;
+    width: 100%;
+    padding: 15px;
+    font-size: 1.5em;
+    font-weight: bold;
+    background: #00aaff;
+    color: #00121c;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    margin-bottom: 20px;
+    transition: all 0.25s;
+
+    /* neon button glow */
+    box-shadow:
+        0 0 20px rgba(0, 180, 255, 1),
+        inset 0 0 10px rgba(255, 255, 255, 0.3);
+}
+
+.start-btn:hover {
+    transform: translateY(-3px);
+    background: #32caff;
+
+    /* more glow */
+    box-shadow:
+        0 0 30px rgba(0, 200, 255, 1),
+        inset 0 0 15px rgba(255, 255, 255, 0.4);
+}
+
+.start-btn:disabled {
+    background: #444;
+    color: #888;
+    cursor: not-allowed;
+    box-shadow: none;
+}
+
+.game-board {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.hole {
+    width: 100%;
+    height: 150px;
+    background: linear-gradient(to bottom, #102030, #0c0c15);
+    border-radius: 50% 50% 0 0 / 25% 25% 0 0;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+
+    /* neon hole ring */
+    box-shadow:
+        0 0 25px rgba(0, 200, 255, 0.4),
+        inset 0 0 20px rgba(140, 0, 255, 0.2);
+    border: 2px solid rgba(0, 200, 255, 0.3);
+}
+
+.mole {
+    width: 80%;
+    height: 80%;
+    background: #1d1d1d;
+    border-radius: 50%;
+    position: absolute;
+    bottom: -100%;
+    left: 50%;
+    transform: translateX(-50%);
+    transition: bottom 0.2s;
+
+    /* neon mole glow */
+    box-shadow: 0 0 20px rgba(0, 200, 255, 0.3);
+}
+
+.mole::before {
+    content: '🐹';
+    font-size: 3em;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.mole.up {
+    bottom: 20%;
+
+    /* extra glow when up */
+    box-shadow: 0 0 30px rgba(0, 200, 255, 0.6);
+}
+
+.mole.bonked {
+    bottom: -100%;
+}
+
+@media (max-width: 600px) {
+    .game-board {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .hole {
+        height: 120px;
+    }
+}
